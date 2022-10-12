@@ -1,0 +1,59 @@
+#include <stdio.h>
+void Queueview(int Q[], int, int);
+void enQueue(int Q[], int*);
+void deQueue(int Q[], int*, int*);
+
+void main()
+{
+	int Q[5], front = -1, rear = -1; //Q(배열의 이름)은 배열이 시작되는 메모리주소의 상수다.(상수값은 변경불가함)
+	int sel;
+	while (1) {
+		Queueview(Q, front, rear);
+		printf("\n\n\t\t[Queue]\n\n");
+		printf("\t\t 1. enQueue\n\n");
+		printf("\t\t 2. deQueue\n\n");
+		printf("\t\t 0. Exit\n\n");
+		printf("\t\t ....[]\b\b");
+		scanf_s("%d", &sel);
+		if (sel == 1) enQueue(Q, &rear);
+		else if (sel == 2) deQueue(Q, &front, &rear);
+		else if (sel == 0) break;
+		else
+		{
+			printf("\n\n\t\t메뉴를 잘못 선택하였습니다.\n\n");
+		}
+		printf("ㅂㅂㅇ");
+	}
+}
+void Queueview(int Q[], int front, int rear) {
+	int i;
+	if (front == rear) printf("\n\n Queue is Empty front = %d, rear = %d\n\n", front, rear);
+	else
+	{
+		printf("\n\n\t\t Queue[");
+		for (i = front + 1; i <= rear; i++) 
+			printf("%5d", Q[i]);
+		printf("] front = %d, rear = %d\n\n", front, rear);
+	}
+}
+void enQueue(int Q[], int*rear) {
+	int data;
+	if ((*rear) == 4) printf("\t\t\nQueue_Full\n\n");
+	else
+	{
+		printf("\n\n\t\t입력 : ");
+		scanf_s("%d", &data);
+		(*rear)++;
+		Q[*rear] = data;
+	}
+}
+void deQueue(int Q[], int*front, int*rear) {
+	if (*front == *rear) printf("\t\t\nQueue_Empty");
+	else
+	{
+		printf("삭제완료");
+		*front += 1;
+		printf("\n\n\t\tdeQwueue Datais [%d]", Q[*front]);
+		
+	}
+}
