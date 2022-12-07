@@ -2,7 +2,7 @@
 void main() {
 	int list[] = { 69,19,39,29,16,3,21,1 };
 	int tmp ,j, i = 0;
-	int len;
+	int len,n;
 	for(j =7; j>0;j--){
 	for (i = 0; i < j; i++) {
 		if (list[i] > list[i + 1]) {
@@ -12,7 +12,7 @@ void main() {
 		}
 	}
 	printf("%d회전 : ", 8-j);
-	for (i = 0; i < 8; i++)
-		printf("%4d", list[i]);
+	for (n = 0; n < 8; n++)
+		printf("%4d", list[n]);
 	printf("\n");
 	}
