@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void main() {
+	int a[10], i, j, temp, k,n;
+	srand((unsigned)time(NULL));
+	for (i = 0; i < 10; i++) {
+		a[i] = rand() % (70 - 21 + 1) + 21;
+	}
+	printf("발행난수 : ");
+	for (i = 0; i < 10; i++) {
+		printf("%5d", a[i]);
+	}
+	printf("\n\n");
+	//삽입정렬 알고리즘
+	for (i = 1; i < 10; i++) {
+		for (j = 0; j <= i; j++) {
+			if (a[i] < a[j]) {
+				temp = a[i];
+				for (k = i; k >= j; k--) {
+					a[k] = a[k - 1];
+				}
+				a[j] = temp;
+			}
+		}
+		printf("   %d단계 : ", i);
+		for (n = 0; n < 10; n++) {
+			printf("%5d", a[n]);
+		}
+		printf("\n");
+	}
+	printf("소트된수 : ");
+	for (i = 0; i < 10; i++) {
+		printf("%5d", a[i]);
+	}
+	printf("\n\n");
+}
