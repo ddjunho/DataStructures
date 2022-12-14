@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void main() {
+	srand((unsigned)time(NULL));
+	int arr[12], inxtable[4][2];
+	int i, j, sizearr, sizeinx,key,tmp;
+	sizearr = sizeof(arr) / sizeof(arr[0]);
+	sizeinx = sizeof(inxtable) / sizeof(inxtable[0]);
+	for (i = 0; i < sizearr; i++)
+		arr[i] = rand() % (99 - 21 + 1) + 21;
+	printf("발행난수 : ");
+	for (i = 0; i < sizearr; i++)
+		printf("%5d", arr[i]);
+	printf("\n");
+
+	//순차(선형)검색 알고리즘
+	//printf("\n\n순차 검색 key : ");
+	//scanf_s("%d", &key);
+	//for (i = 0; i < sizearr; i++)
+	//	if (arr[i] == key)break;
+	//if (i == sizearr)printf("\n검색실패!!!\n\n");
+	//else printf("\n검색성공: %d의 위치는 %d입니다.\n\n", arr[i], i);
+	
+	//색인순차검색알고리즘-> sort가 우선되어야 한다.
+	for (i=0; i<sizearr-1; i++){
+		for(j=i+1;j<sizearr; j++)
+			if (arr[i] > arr[j]) {
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+	}
+	printf("오름차순 : ");
+	for (i = 0; i < sizearr; i++)
+		printf("%5d", arr[i]);
+	printf("\n");
+}
